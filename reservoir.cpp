@@ -95,15 +95,12 @@ std::string compare_basins(std::string date) {
     while(fin >> dateInfo >> EastSt >> EastEl >> WestSt ) {
         fin.ignore(INT_MAX, '\n');
         if(dateInfo == date) {
-            std::cout << EastSt << "\n";
-            std::cout << WestSt << "\n";
-
             if(EastSt > WestSt) {
                 return "East";
             } else if(WestSt > EastSt) {
                 return "West";
             } else {
-                return "equal";
+                return "Equal";
             }
         }
     }

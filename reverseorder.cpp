@@ -49,9 +49,10 @@ void reverse_order(std::string date1, std::string date2) {
         dayTemp--;
     }
 
-    int WestElArray [totalDay];
+    double WestElArray [totalDay];
     std::string dateArray [totalDay];
     int i = 0;
+    int temp = 0;
 
     while(!(month2 == month1) || !(day2 == day1)) {
         if(day2 == 0) {
@@ -65,7 +66,9 @@ void reverse_order(std::string date1, std::string date2) {
             day2 = 28;
         }
         }
-        std::cout << std::setw(2) << std::setfill('0') << std::to_string(month2) << "/" << std::setw(2) << std::setfill('0') << std::to_string(day2) << "/2018 \n ";
+        if(day2 == 0) {
+            temp = 0;
+        } else {
         std::ostringstream oss;
         auto cout_buff = std::cout.rdbuf(oss.rdbuf());
         std::cout << std::setw(2) << std::setfill('0') << std::to_string(month2) << "/" << std::setw(2) << std::setfill('0') << std::to_string(day2) << "/2018";
@@ -74,20 +77,26 @@ void reverse_order(std::string date1, std::string date2) {
         dateArray[i] = dayTemp;
         i++;
         day2--;
+        }
     }
+        dateArray[totalDay-1] = date1;
 
+        for(int i = 0; i < totalDay; i++) {
+            std::cout << dateArray[i] << "\n";
+        }
+    int q = 0;
+    int j = totalDay-1;
     while(fin >> dateInfo >> EastSt >> EastEl >> WestSt >> WestEl) {
     fin.ignore(INT_MAX, '\n');
-    int i = 0;
-    int j = totalDay-1;
+
     if(dateInfo == dateArray[j]) {
-        std::cout << "maybe";
-        WestElArray[i] = WestEl;
-        i++;
+        WestElArray[q] = WestEl;
         j--;
+        q++;
     }
 }
     for(int i = 0; i < totalDay; i++) {
-        std::cout << dateArray[i] << "\n";
+        std::cout << dateArray[i] << " " << WestElArray[totalDay-i-1] << "\n";
     }
+
 }
