@@ -23,11 +23,6 @@ void reverse_order(std::string date1, std::string date2) {
     int month1 = std::stoi(date1.substr(0,2));
     int day1 = std::stoi(date1.substr(3,5));
 
-    std::cout << "month: " << month2 << "\n";
-    std::cout << "day: " << day2 << "\n";
-    std::cout << "month: " << month1 << "\n";
-    std::cout << "day: " << day1 << "\n";
-
     int totalDay = 1;
 
     int monthTemp = month2;
@@ -81,9 +76,6 @@ void reverse_order(std::string date1, std::string date2) {
     }
         dateArray[totalDay-1] = date1;
 
-        for(int i = 0; i < totalDay; i++) {
-            std::cout << dateArray[i] << "\n";
-        }
     int q = 0;
     int j = totalDay-1;
     while(fin >> dateInfo >> EastSt >> EastEl >> WestSt >> WestEl) {
